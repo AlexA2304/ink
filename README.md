@@ -2,6 +2,11 @@
 ## Introduction
 - Ink is a simple web app meant to test out working with 3D models with Three.js, Fiber, and Drei and experiment with the OpenAI API. This app allows you to test out different designs and logos on a 3D model of a T-shirt. This app supports both custom logo and texture uploads, a color picker, and even AI image generation with DALLE-2.
 
+## Demo
+
+
+https://github.com/AlexA2304/ink/assets/132388989/bf541f57-ff4f-465b-bc0e-e64828384928
+
 
 
 ## Tech Stack
@@ -44,12 +49,12 @@
 
   - Make sure you have the following installed on your machine:
 
-`Git`
-`Node.js`
-`npm (Node Package Manager)`
-`Cloning the Repository`
+`Git`<br>
+`Node.js`<br>
+`npm (Node Package Manager)`<br>
+Cloning the Repository:<br>
 
-`git clone https://github.com/adrianhajdin/project_threejs_ai.git`
+`git clone https://github.com/adrianhajdin/project_threejs_ai.git`<br>
 `cd project_threejs_ai`
 
 ## Installation
