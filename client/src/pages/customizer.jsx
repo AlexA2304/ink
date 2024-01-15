@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useSnapshot } from 'valtio';
+
 import config from '../config/config';
 import state from '../store';
 import { download } from '../assets';
 import { downloadCanvasToImage, reader } from '../config/helpers';
-import { EditorTabs, FilterTabs, DecalTypes } from '../config/constants'
+import { EditorTabs, FilterTabs, DecalTypes } from '../config/constants';
 import { fadeAnimation, slideAnimation } from '../config/motion';
 import { AIPicker, ColorPicker, CustomButton, FilePicker, Tab } from '../components';
-import { useSnapshot } from 'valtio';
 
 const customizer = () => {
     const snap = useSnapshot(state);
@@ -49,13 +49,26 @@ const customizer = () => {
         if (!prompt) return alert("Please enter a prompt");
 
         try {
-            // calls the backend to generate an ai image
+            setGeneratingImg(true);
 
+            const response = await fetch('http://localhost:8080/api/v1/dalle', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    prompt,
+                })
+            })
+
+            const data = await response.json();
+
+            handleDecals(type, `data:image/png;base64,${data.photo}`);
         } catch (error) {
             alert(error)
         } finally {
             setGeneratingImg(false);
-            setActiveEditorTab("")
+            setActiveEditorTab("");
         }
     }
 
